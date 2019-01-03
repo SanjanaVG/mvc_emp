@@ -1,0 +1,69 @@
+﻿@using Emp_Mvc.Models
+@model LoginModel
+@*@{
+    ViewBag.Title = "Log in";*@
+@*}*@
+
+
+<h2>@ViewBag.Title.</h2>
+<div style="position:center" >
+            @using (Html.BeginForm("Autherize","Login", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @*<h4>Use a local account to log in.</h4>
+                <hr />*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EmpId, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.EmpId, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EmpId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EmpName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.EmpName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EmpName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                        <input type="reset" value="Reset" class="btn btn-default" />
+
+                    </div>
+                </div>
+                <br/>
+                
+                <div>
+                    <label class="="field-validation-error">@Html.DisplayFor(m => m.LoginMessage)</label>
+                </div>
+               
+            }
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script> 
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @*<div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>*@
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
